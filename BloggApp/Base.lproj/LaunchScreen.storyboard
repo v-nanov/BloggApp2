@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15E33e" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="01J-lp-oVM">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="EHf-IW-A2E">
+            <objects>
+                <viewController id="01J-lp-oVM" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Llm-lL-Icb"/>
+                        <viewControllerLayoutGuide type="bottom" id="xb3-aO-Qok"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleAspectFill" id="Ze5-6b-2t3">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bboot.png" translatesAutoresizingMaskIntoConstraints="NO" id="ZZa-bs-SSo">
+                                <rect key="frame" x="225" y="262" width="150" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="lYZ-IG-Sin"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="B-Boot" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Ld-hB-ji5">
+                                <rect key="frame" x="213" y="208" width="175" height="53"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="53" id="Rfy-uJ-2Lu"/>
+                                    <constraint firstAttribute="width" constant="175" id="rwn-Tj-lyU"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="50"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="§ Welcome to the Cognitive Blog Era §" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zaC-Dn-b2e">
+                                <rect key="frame" x="163" y="370" width="275" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="BRJ-bw-bUn"/>
+                                    <constraint firstAttribute="width" constant="275" id="FNX-SC-uJh"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="14"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.99215686270000003" green="0.55294117649999996" blue="0.23921568630000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="9Ld-hB-ji5" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="188" id="HWO-XV-8mm"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="zaC-Dn-b2e" secondAttribute="bottom" constant="209" id="LWN-wg-Lh9"/>
+                            <constraint firstItem="zaC-Dn-b2e" firstAttribute="top" secondItem="ZZa-bs-SSo" secondAttribute="bottom" constant="8" symbolic="YES" id="Ufm-6g-buA"/>
+                            <constraint firstItem="ZZa-bs-SSo" firstAttribute="centerX" secondItem="zaC-Dn-b2e" secondAttribute="centerX" id="YUX-4c-SOG"/>
+                            <constraint firstItem="zaC-Dn-b2e" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="elr-cs-Cqc"/>
+                            <constraint firstItem="ZZa-bs-SSo" firstAttribute="top" secondItem="9Ld-hB-ji5" secondAttribute="bottom" constant="1" id="n4z-CY-3uy"/>
+                            <constraint firstItem="zaC-Dn-b2e" firstAttribute="centerX" secondItem="9Ld-hB-ji5" secondAttribute="centerX" id="t5G-Xs-yYC"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="53" y="375"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="bboot.png" width="1200" height="1200"/>
+    </resources>
+</document>
