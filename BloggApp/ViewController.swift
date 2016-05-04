@@ -7,11 +7,37 @@
 //
 
 import UIKit
+import AVFoundation
+
+
 import WatsonDeveloperCloud
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, AVAudioRecorderDelegate {
     @IBOutlet weak var printLabelLocotions: UILabel!
     @IBOutlet weak var printHashtagLabel: UILabel!
+    
+    
+    //Speech to Text Integration
+    @IBOutlet weak var startStopRecordingButton: UIButton!
+    @IBOutlet weak var playRecordingButton: UIButton!
+    @IBOutlet weak var transcribeButton: UIButton!
+    @IBOutlet weak var startStopStreamingDefaultButton: UIButton!
+    @IBOutlet weak var startStopStreamingCustomButton: UIButton!
+    @IBOutlet weak var transcriptionField: UITextView!
+    
+    var stt: SpeechToText?
+    var player: AVAudioPlayer? = nil
+    var recorder: AVAudioRecorder!
+    var isStreamingDefault = false
+    var stopStreamingDefault: (Void -> Void)? = nil
+    var isStreamingCustom = false
+    var stopStreamingCustom: (Void -> Void)? = nil
+    var captureSession: AVCaptureSession? = nil
+    
+    //Slut Speech to tex
+    
+    
+    
     
     @IBAction func fastLocation(sender: AnyObject) {
       
@@ -85,10 +111,12 @@ class ViewController: UIViewController {
         
     }
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+               
         
     }
 
