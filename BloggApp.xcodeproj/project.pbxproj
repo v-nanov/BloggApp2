@@ -20,6 +20,7 @@
 		D48553A11CD9DB0900E6CB3E /* ObjectMapper.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = D48553941CD9DA8D00E6CB3E /* ObjectMapper.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D48553A21CD9DB0A00E6CB3E /* Starscream.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = D48553951CD9DA8D00E6CB3E /* Starscream.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D48553A31CD9DB0A00E6CB3E /* WatsonDeveloperCloud.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = D48553961CD9DA8D00E6CB3E /* WatsonDeveloperCloud.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D485594C1CE0B70300E6CB3E /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D485594B1CE0B70300E6CB3E /* AudioToolbox.framework */; };
 		D4C65A031CB92F4A00C3F599 /* bboot.png in Resources */ = {isa = PBXBuildFile; fileRef = D4C65A021CB92F4A00C3F599 /* bboot.png */; };
 		D4D2436D1CB7DE58006F3275 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D2436C1CB7DE58006F3275 /* AppDelegate.swift */; };
 		D4D2436F1CB7DE58006F3275 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D2436E1CB7DE58006F3275 /* ViewController.swift */; };
@@ -60,6 +61,8 @@
 		D48553941CD9DA8D00E6CB3E /* ObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjectMapper.framework; path = Carthage/Build/iOS/ObjectMapper.framework; sourceTree = "<group>"; };
 		D48553951CD9DA8D00E6CB3E /* Starscream.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Starscream.framework; path = Carthage/Build/iOS/Starscream.framework; sourceTree = "<group>"; };
 		D48553961CD9DA8D00E6CB3E /* WatsonDeveloperCloud.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WatsonDeveloperCloud.framework; path = Carthage/Build/iOS/WatsonDeveloperCloud.framework; sourceTree = "<group>"; };
+		D485594B1CE0B70300E6CB3E /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		D485594D1CE0B70300E6CB3E /* BloggApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = BloggApp.entitlements; sourceTree = "<group>"; };
 		D4C65A021CB92F4A00C3F599 /* bboot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bboot.png; sourceTree = "<group>"; };
 		D4D243691CB7DE58006F3275 /* BloggApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BloggApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4D2436C1CB7DE58006F3275 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -84,6 +87,7 @@
 				D48553971CD9DA8D00E6CB3E /* Alamofire.framework in Frameworks */,
 				D48553981CD9DA8D00E6CB3E /* AlamofireObjectMapper.framework in Frameworks */,
 				D485539A1CD9DA8D00E6CB3E /* ObjectMapper.framework in Frameworks */,
+				D485594C1CE0B70300E6CB3E /* AudioToolbox.framework in Frameworks */,
 				D485539B1CD9DA8D00E6CB3E /* Starscream.framework in Frameworks */,
 				D48553991CD9DA8D00E6CB3E /* HTTPStatusCodes.framework in Frameworks */,
 				D485539C1CD9DA8D00E6CB3E /* WatsonDeveloperCloud.framework in Frameworks */,
@@ -96,6 +100,7 @@
 		D48553901CD9D83500E6CB3E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D485594B1CE0B70300E6CB3E /* AudioToolbox.framework */,
 				D48553911CD9DA8D00E6CB3E /* Alamofire.framework */,
 				D48553921CD9DA8D00E6CB3E /* AlamofireObjectMapper.framework */,
 				D48553931CD9DA8D00E6CB3E /* HTTPStatusCodes.framework */,
@@ -106,11 +111,19 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		D48558A81CE08E3600E6CB3E /* Library */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Library;
+			sourceTree = "<group>";
+		};
 		D4D243601CB7DE58006F3275 = {
 			isa = PBXGroup;
 			children = (
-				D48553901CD9D83500E6CB3E /* Frameworks */,
 				D485538E1CD9D3C600E6CB3E /* cartfile */,
+				D48558A81CE08E3600E6CB3E /* Library */,
+				D48553901CD9D83500E6CB3E /* Frameworks */,
 				D4D2436B1CB7DE58006F3275 /* BloggApp */,
 				D4D2436A1CB7DE58006F3275 /* Products */,
 			);
@@ -127,6 +140,7 @@
 		D4D2436B1CB7DE58006F3275 /* BloggApp */ = {
 			isa = PBXGroup;
 			children = (
+				D485594D1CE0B70300E6CB3E /* BloggApp.entitlements */,
 				D4D243801CB7E066006F3275 /* images */,
 				D4D2436C1CB7DE58006F3275 /* AppDelegate.swift */,
 				D4D2436E1CB7DE58006F3275 /* ViewController.swift */,
@@ -185,6 +199,15 @@
 				TargetAttributes = {
 					D4D243681CB7DE58006F3275 = {
 						CreatedOnToolsVersion = 7.2.1;
+						DevelopmentTeam = D4X9FX4WXA;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.InterAppAudio = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -346,11 +369,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = BloggApp/BloggApp.entitlements;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = BloggApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = se.idesigner.BloggApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -361,11 +387,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = BloggApp/BloggApp.entitlements;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = BloggApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = se.idesigner.BloggApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";

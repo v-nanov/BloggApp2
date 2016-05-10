@@ -12,6 +12,7 @@ import AVFoundation
 
 import WatsonDeveloperCloud
 
+
 class ViewController: UIViewController, AVAudioRecorderDelegate {
     @IBOutlet weak var printLabelLocotions: UILabel!
     @IBOutlet weak var printHashtagLabel: UILabel!
@@ -115,6 +116,9 @@ class ViewController: UIViewController, AVAudioRecorderDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        
+        
         // create file to store recordings
         let documents = NSSearchPathForDirectoriesInDomains(.DocumentDirectory,
                                                             .UserDomainMask, true)[0]
@@ -445,17 +449,8 @@ class ViewController: UIViewController, AVAudioRecorderDelegate {
         return first + String(s.characters.dropFirst())
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
 
-    override func viewDidAppear(animated: Bool) {
-        
-
-    }
-               
-        
+    
     }
 
 
