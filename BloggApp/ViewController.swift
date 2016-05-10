@@ -248,6 +248,7 @@ class ViewController: UIViewController, AVAudioRecorderDelegate {
     
     @IBAction func transcribe() {
         
+        
         // ensure recorder is set up
         guard let recorder = recorder else {
             failure("Transcribe", message: "Recorder not properly set up.")
