@@ -12,8 +12,10 @@ import AVFoundation
 
 import WatsonDeveloperCloud
 
-
-class ViewController: UIViewController, AVAudioRecorderDelegate {
+class ViewController: UIViewController, AVAudioPlayerDelegate, AVAudioRecorderDelegate {
+    
+    var resultSearchController: UISearchController!
+    
     @IBOutlet weak var printLabelLocotions: UILabel!
     @IBOutlet weak var printHashtagLabel: UILabel!
     
@@ -117,9 +119,29 @@ class ViewController: UIViewController, AVAudioRecorderDelegate {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+//        let tts = TextToSpeech(username: "2daac119-650a-431f-8cb6-18c59ef02220", password: "2aSwM2dZtyJ9")
+//        tts.synthesize("All the problems of the world could be settled easily if men were only willing to think.") {
+//            
+//            data, error in
+//            
+//            if let audio = data {
+//                
+//                do {
+//                    self.player = try AVAudioPlayer(data: audio)
+//                    self.player!.play()
+//                } catch {
+//                    print("Couldn't create player.")
+//                }
+//                
+//            } else {
+//                print(error)
+//            }
+//            
+//        }
         
         
         // create file to store recordings
+
         let documents = NSSearchPathForDirectoriesInDomains(.DocumentDirectory,
                                                             .UserDomainMask, true)[0]
         let filename = "SpeechToTextRecording.wav"
@@ -127,6 +149,7 @@ class ViewController: UIViewController, AVAudioRecorderDelegate {
         
         // set up session and recorder
         let session = AVAudioSession.sharedInstance()
+        
         var settings = [String: AnyObject]()
         settings[AVSampleRateKey] = NSNumber(float: 44100.0)
         settings[AVNumberOfChannelsKey] = NSNumber(int: 1)
@@ -134,7 +157,7 @@ class ViewController: UIViewController, AVAudioRecorderDelegate {
             try session.setCategory(AVAudioSessionCategoryPlayAndRecord)
             recorder = try AVAudioRecorder(URL: filepath, settings: settings)
         } catch {
-            failure("Audio Recording", message: "Error setting up session/recorder.")
+            failure("Au Rec", message: "Error setting up session/recorder.")
         }
         
         // ensure recorder is set up
@@ -172,13 +195,13 @@ class ViewController: UIViewController, AVAudioRecorderDelegate {
         }
         
         // read SpeechToText username
-        guard let user = credentials["SpeechToTextUsername"] else {
+        guard let user = credentials["2daac119-650a-431f-8cb6-18c59ef02220"] else {
             failure("Loading Credentials", message: "Unable to read Speech to Text username.")
             return
         }
         
         // read SpeechToText password
-        guard let password = credentials["SpeechToTextPassword"] else {
+        guard let password = credentials["2aSwM2dZtyJ9"] else {
             failure("Loading Credentials", message: "Unable to read Speech to Text password.")
             return
         }
@@ -190,7 +213,7 @@ class ViewController: UIViewController, AVAudioRecorderDelegate {
         
         // ensure recorder is set up
         guard let recorder = recorder else {
-            failure("Start/Stop Recording", message: "Recorder not properly set up.")
+            failure(">/X Rec", message: "Recorder not properly set up.")
             return
         }
         
@@ -207,22 +230,22 @@ class ViewController: UIViewController, AVAudioRecorderDelegate {
                 let session = AVAudioSession.sharedInstance()
                 try session.setActive(true)
                 recorder.record()
-                startStopRecordingButton.setTitle("Stop Recording", forState: .Normal)
+                startStopRecordingButton.setTitle("X Rec", forState: .Normal)
                 playRecordingButton.enabled = false
                 transcribeButton.enabled = false
             } catch {
-                failure("Start/Stop Recording", message: "Error setting session active.")
+                failure(">/X Rec", message: "Error setting session active.")
             }
         } else {
             do {
                 recorder.stop()
                 let session = AVAudioSession.sharedInstance()
                 try session.setActive(false)
-                startStopRecordingButton.setTitle("Start Recording", forState: .Normal)
+                startStopRecordingButton.setTitle("> Rec", forState: .Normal)
                 playRecordingButton.enabled = true
                 transcribeButton.enabled = true
             } catch {
-                failure("Start/Stop Recording", message: "Error setting session inactive.")
+                failure(">/X Rec", message: "Error setting session inactive.")
             }
         }
     }
@@ -231,7 +254,7 @@ class ViewController: UIViewController, AVAudioRecorderDelegate {
         
         // ensure recorder is set up
         guard let recorder = recorder else {
-            failure("Play Recording", message: "Recorder not properly set up")
+            failure("> Rec", message: "Recorder not properly set up")
             return
         }
         
@@ -241,7 +264,7 @@ class ViewController: UIViewController, AVAudioRecorderDelegate {
                 player = try AVAudioPlayer(contentsOfURL: recorder.url)
                 player?.play()
             } catch {
-                failure("Play Recording", message: "Error creating audio player.")
+                failure("> Rec", message: "Error creating audio player.")
             }
         }
     }
@@ -251,19 +274,19 @@ class ViewController: UIViewController, AVAudioRecorderDelegate {
         
         // ensure recorder is set up
         guard let recorder = recorder else {
-            failure("Transcribe", message: "Recorder not properly set up.")
+            failure("T", message: "Recorder not properly set up.")
             return
         }
         
         // ensure SpeechToText service is set up
         guard let stt = stt else {
-            failure("Transcribe", message: "SpeechToText not properly set up.")
+            failure("T", message: "SpeechToText not properly set up.")
             return
         }
         
         // load data from saved recording
         guard let data = NSData(contentsOfURL: recorder.url) else {
-            failure("Transcribe", message: "Error retrieving saved recording data.")
+            failure("T", message: "Error retrieving saved recording data.")
             return
         }
         
@@ -279,7 +302,7 @@ class ViewController: UIViewController, AVAudioRecorderDelegate {
         // stop if already streaming
         if (isStreamingDefault) {
             stopStreamingDefault?()
-            startStopStreamingDefaultButton.setTitle("Start Streaming (Default)", forState: .Normal)
+            startStopStreamingDefaultButton.setTitle("> D", forState: .Normal)
             isStreamingDefault = false
             return
         }
@@ -288,7 +311,7 @@ class ViewController: UIViewController, AVAudioRecorderDelegate {
         isStreamingDefault = true
         
         // change button title
-        startStopStreamingDefaultButton.setTitle("Stop Streaming (Default)", forState: .Normal)
+        startStopStreamingDefaultButton.setTitle("X D", forState: .Normal)
         
         // ensure SpeechToText service is up
         guard let stt = stt else {
@@ -313,7 +336,7 @@ class ViewController: UIViewController, AVAudioRecorderDelegate {
         if (isStreamingCustom) {
             captureSession?.stopRunning()
             stopStreamingCustom?()
-            startStopStreamingCustomButton.setTitle("Start Streaming (Custom)", forState: .Normal)
+            startStopStreamingCustomButton.setTitle("> C", forState: .Normal)
             isStreamingCustom = false
             return
         }
@@ -322,7 +345,7 @@ class ViewController: UIViewController, AVAudioRecorderDelegate {
         isStreamingCustom = true
         
         // change button title
-        startStopStreamingCustomButton.setTitle("Stop Streaming (Custom)", forState: .Normal)
+        startStopStreamingCustomButton.setTitle("X C", forState: .Normal)
         
         // ensure SpeechToText service is up
         guard let stt = stt else {
@@ -369,7 +392,7 @@ class ViewController: UIViewController, AVAudioRecorderDelegate {
         // access tuple elements
         guard let output = outputOpt else {
             isStreamingCustom = false
-            startStopStreamingCustomButton.setTitle("Start Streaming (Custom)", forState: .Normal)
+            startStopStreamingCustomButton.setTitle("Start C", forState: .Normal)
             return
         }
         let transcriptionOutput = output.0
@@ -418,7 +441,7 @@ class ViewController: UIViewController, AVAudioRecorderDelegate {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
         let ok = UIAlertAction(title: "OK", style: .Default) { action in
             self.startStopStreamingCustomButton.enabled = true
-            self.startStopStreamingCustomButton.setTitle("Start Streaming (Custom)",
+            self.startStopStreamingCustomButton.setTitle("> C",
                                                          forState: .Normal)
             self.isStreamingCustom = false
         }
